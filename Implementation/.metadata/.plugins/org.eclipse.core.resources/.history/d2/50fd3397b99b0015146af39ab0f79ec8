@@ -18,6 +18,35 @@ public abstract class Enemy extends GameObject{
 		this.damage = damage;
 		// TODO Auto-generated constructor stub
 	}
+	public String getName(){
+		return name;
+	}
+	
+	public int getPositionX(){
+		return positionX;
+	}
+	public int getPositionY(){
+		return positionY;
+	}
+	public void updatePosition(int x, int y){
+		positionX = x;
+		positionY = y;
+	}
+	public int getVelocity(){
+		return velocity;
+	}
+	public void incrementVelocityBy(int diff){
+		velocity += diff;
+	}
+	public void decrementHealthBy(int damage){
+		health -= damage;
+	}
+	public int getDamage(){
+		return damage;
+	}
+	public int getHealth(){
+		return health;
+	}
 	public abstract String getName();
 	public abstract int getPositionX();
 	public abstract int getPositionY();

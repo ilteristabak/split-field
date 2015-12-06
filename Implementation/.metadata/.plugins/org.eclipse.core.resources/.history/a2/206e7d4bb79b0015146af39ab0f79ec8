@@ -104,11 +104,25 @@ public class GameScreenManager extends JFrame {
 			((MainMenu)currentPanel).repaint();
 			return ((MainMenu)currentPanel).getButtons();
 		}
+		else if(s.equals("newGame")){
+			remove((ChoosePlayTypeMenu)currentPanel);
+			currentPanel = new GameEngine("new"); // Level buradan belirlenecek
+			add((GameEngine)currentPanel);
+			((GameEngine)currentPanel).repaint();
+			return null;
+		}
+		else if(s.equals("loadGame")){
+			remove((ChoosePlayTypeMenu)currentPanel);
+			currentPanel = new GameEngine("load"); // Level buradan belirlenecek
+			add((GameEngine)currentPanel);
+			((GameEngine)currentPanel).repaint();
+			return null;
+		}
 		else
 			return null;
 	}
 	public GameEngine setCurrentPanelHolderFor(String s){
-		if(s.equals("new")){
+		if(s.equals("newGame")){
 			remove((ChoosePlayTypeMenu)currentPanel);
 			currentPanel = new GameEngine("new"); // Level buradan belirlenecek
 			add((GameEngine)currentPanel);
@@ -120,7 +134,7 @@ public class GameScreenManager extends JFrame {
 			currentPanel = new GameEngine("load"); // Level buradan belirlenecek
 			add((GameEngine)currentPanel);
 			((GameEngine)currentPanel).repaint();
-			return (GameEngine)currentPanel;
+			return null;
 		}
 	}
 	public void openFrames(){

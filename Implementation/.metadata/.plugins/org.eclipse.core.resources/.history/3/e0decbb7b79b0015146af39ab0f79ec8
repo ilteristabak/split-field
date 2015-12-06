@@ -47,11 +47,8 @@ public class GameController implements ActionListener, KeyListener {
 		if(e.getActionCommand().equals("saveGame")){
 			
 		}
-		else if(e.getActionCommand().equals("newGame")){
-			screenManager.setCurrentPanelHolderFor("new").addKeyListener(this);
-		}
-		else if(e.getActionCommand().equals("loadGame")){
-			screenManager.setCurrentPanelHolderFor("load").addKeyListener(this);
+		else if(e.getActionCommand().equals("newGame") || e.getActionCommand().equals("loadGame")){
+			
 		}
 		else{
 			Queue<JButton> listOfButtons = screenManager.setCurrentPanelHolder(e.getActionCommand());

@@ -108,7 +108,7 @@ public class GameScreenManager extends JFrame {
 			return null;
 	}
 	public GameEngine setCurrentPanelHolderFor(String s){
-		if(s.equals("new")){
+		if(s.equals("newGame")){
 			remove((ChoosePlayTypeMenu)currentPanel);
 			currentPanel = new GameEngine("new"); // Level buradan belirlenecek
 			add((GameEngine)currentPanel);

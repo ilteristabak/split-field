@@ -1,8 +1,8 @@
 package com.group15.splitfield.entity;
 
-public class MajorEnemy1 extends Enemy {
+public class MinorEnemy1 extends Enemy{
 
-	public MajorEnemy1(int positionX, int positionY, int length, int width, int velocity, String name, int health,
+	public MinorEnemy1(int positionX, int positionY, int length, int width, int velocity, String name, int health,
 			int damage) {
 		super(positionX, positionY, length, width, velocity, name, health, damage);
 		// TODO Auto-generated constructor stub
@@ -46,5 +46,4 @@ public class MajorEnemy1 extends Enemy {
 		return health;
 	}
 	
-
 }
