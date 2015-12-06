@@ -1,0 +1,11 @@
+package com.group15.splitfield.entity;
+
+public class GameObject {
+	private int positionX;
+	private int positionY;
+	
+	public GameObject(int positionX, int positionY){
+		this.positionX = positionX;
+		this.positionY = positionY;
+	}
+}

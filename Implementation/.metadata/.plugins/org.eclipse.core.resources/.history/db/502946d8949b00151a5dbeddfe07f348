@@ -1,0 +1,22 @@
+package com.group15.splitfield.entity;
+
+public abstract class Enemy extends GameObject{
+	private int length;
+	private int width;
+	private int velocity;
+	private String name;
+	private int health;
+	private int damage;
+	
+	public Enemy(int positionX, int positionY, int length, int width, int velocity, String name, int health, int damage) {
+		super(positionX, positionY);
+		this.length = length;
+		this.width = width;
+		this.velocity = velocity;
+		this.name = name;
+		this.health = health;
+		this.damage = damage;
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,92 @@
+package com.group15.splitfield.gui;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import javax.swing.*;
+
+public class ChoosePlayTypeMenu extends Menu{
+
+	// Button declarations
+	JButton newGame;
+	JButton loadGame;
+	
+	JLabel logo;
+	
+	public ChoosePlayTypeMenu(){
+		
+		// Initialize buttons
+		super.back = new JButton("Back");
+		newGame = new JButton("New Game");
+		loadGame = new JButton("Load Game");
+		logo = new JLabel("Play Game");
+		
+		newGame.setActionCommand("newGame");
+		loadGame.setActionCommand("loadGame");
+		back.setActionCommand("back");
+		add(logo);
+		add(back);
+		add(newGame);
+		add(loadGame);
+		add(back);
+		
+		Insets insets = getInsets();
+		back.setPreferredSize( new Dimension((int)getSize().getWidth()/12,(int)getSize().getHeight()/12));
+		//back.addActionListener(new ActionListener());
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
+		back.setFont(new Font("Arial", 0, 20));
+		back.setFocusPainted(false);
+		back.setForeground(new Color(240,13,13));
+		
+		newGame.setPreferredSize( new Dimension((int)getSize().getWidth()/5,(int)getSize().getHeight()/12));
+		//newGame.addActionListener(new ButtonListener());
+		newGame.setContentAreaFilled(false);
+		newGame.setBorderPainted(false);
+		newGame.setFont(new Font("Arial", 0, 40));
+		newGame.setFocusPainted(false);
+		newGame.setForeground(new Color(240,13,13));
+		
+		loadGame.setPreferredSize( new Dimension((int)getSize().getWidth()/5,(int)getSize().getHeight()/12));
+		//loadGame.addActionListener(new ButtonListener());
+		loadGame.setContentAreaFilled(false);
+		loadGame.setBorderPainted(false);
+		loadGame.setFont(new Font("Arial", 0, 40));
+		loadGame.setFocusPainted(false);
+		loadGame.setForeground(new Color(240,13,13));
+		
+		
+		logo.setForeground(new Color(255,255,255));
+		logo.setFont( new Font("Arial", 0, 80));
+
+		
+		Dimension size = logo.getPreferredSize();
+		logo.setBounds((int)getSize().getWidth()/3 + insets.left, 50 + insets.top,
+		             size.width, size.height);
+		size = back.getPreferredSize();
+		back.setBounds(10 + insets.left, 10 + insets.top,
+		             size.width, size.height);
+		size = newGame.getPreferredSize();
+		newGame.setBounds((int)getSize().getWidth()/3+50 + insets.left, 250 + insets.top,
+		             size.width, size.height);
+		
+		size = loadGame.getPreferredSize();
+		loadGame.setBounds((int)getSize().getWidth()/3+50 + insets.left, 350 + insets.top,
+		             size.width, size.height);
+		
+	}
+	
+	public Queue<JButton> getButtons(){
+		Queue<JButton> q = new LinkedList<JButton>();
+		q.add(newGame);
+		q.add(loadGame);
+		q.add(super.back);
+		return q;
+	}
+}

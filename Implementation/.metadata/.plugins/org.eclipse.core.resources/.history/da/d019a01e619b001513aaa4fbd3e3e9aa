@@ -1,0 +1,43 @@
+package com.group15.splitfield.controller;
+
+public class GameScreenManager {
+	
+	Object currentFrame;
+	Object pauseFrame;
+	
+	//constructor
+	public GameScreenManager(){
+		
+	}
+	
+	//methods
+	public void setCurrentFrameHolder(String s){
+		if(s.equals("mainmenu")){
+			currentFrame = null;
+		}
+		else if(s.equals("pause")){
+			pauseFrame = currentFrame;
+			((GameEngine)pauseFrame).setVisible(false);
+			// GameEngine'in içindeki gameLoopu durdur.
+			currentFrame = null;
+		}
+		else if(s.equals("backToGame")){
+			currentFrame.dispose();
+			currentFrame = pauseFrame;
+			((GameEngine)currentFrame).setVisible(true);
+			// GameEngine'in içindeki gameLoopu durdur.
+			
+		}
+	}
+	public void setCurrentFrameHolder(String s, int level){
+		
+	}
+	
+	public void openFrames(){
+		
+	}
+	public Object getCurrentFrameHolder(){
+		return this. currentFrame;
+	}
+	
+}

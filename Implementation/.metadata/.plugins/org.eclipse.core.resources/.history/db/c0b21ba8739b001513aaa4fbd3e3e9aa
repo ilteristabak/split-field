@@ -1,0 +1,16 @@
+package com.group15.splitfield.controller;
+
+public class FileManagerForSaveLoad extends FileManager {
+
+	public FileManagerForSaveLoad(String fileDirectory, String fileName) {
+		super(fileDirectory, fileName);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void loadGame(){
+		
+	}
+	public void saveGame(){
+		
+	}
+}

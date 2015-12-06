@@ -1,0 +1,12 @@
+package com.group15.splitfield.controller;
+
+public class FileManager {
+	private String fileDirectory;
+	private String fileName;
+	
+	public FileManager(String fileDirectory, String fileName){
+		this.fileDirectory = fileDirectory;
+		this.fileName = fileName;
+	}
+
+}

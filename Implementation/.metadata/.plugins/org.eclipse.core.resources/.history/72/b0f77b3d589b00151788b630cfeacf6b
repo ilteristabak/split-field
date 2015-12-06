@@ -1,0 +1,13 @@
+package com.group15.splitfield.controller;
+
+public class LevelManager {
+	private int allLevels[][][];
+	private FileManager fileManager;
+	
+	public LevelManager(){
+		fileManager = new FileManagerForLevel();
+		allLevels = fileManager.loadLevels();
+		
+		
+	}
+}

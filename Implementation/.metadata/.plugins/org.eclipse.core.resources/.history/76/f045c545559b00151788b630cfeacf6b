@@ -1,0 +1,11 @@
+package com.group15.splitfield.controller;
+
+public class BackgroundManager {
+	int pixels[][];
+	double cutRatio;
+	
+	public BackgroundManager(){
+		pixels = new int[800][600];
+		cutRatio = 0;
+	}
+}

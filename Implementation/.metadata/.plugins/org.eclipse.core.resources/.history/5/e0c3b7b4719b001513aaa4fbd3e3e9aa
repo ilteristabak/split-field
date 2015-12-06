@@ -1,0 +1,83 @@
+package com.group15.splitfield.controller;
+
+import java.util.List;
+import java.util.Queue;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import com.group15.splitfield.gui.*;
+
+public class GameScreenManager extends JFrame {
+	
+	Object currentPanel;
+	Object pausePanel;
+	
+	//constructor
+	public GameScreenManager(){
+		// 
+		currentPanel = new MainMenu();
+	}
+	
+	//methods
+	public Queue<JButton> setCurrentPanelHolder(String s){
+		if(s.equals("choosePlayType")){
+			remove((MainMenu)currentPanel);
+			currentPanel = new ChoosePlayTypeMenu();
+			return ((ChoosePlayTypeMenu)currentPanel).getButtons();
+		}
+		else if(s.equals("highScores")){
+			remove((MainMenu)currentPanel);
+			currentPanel = new HighScoresMenu();
+			return ((HighScoresMenu)currentPanel).getButtons();
+		}
+		else if(s.equals("help")){
+			remove((MainMenu)currentPanel);
+			currentPanel = new HelpMenu();
+			return ((HelpMenu)currentPanel).getButtons();
+		}
+		else if(s.equals("exit")){
+			remove((MainMenu)currentPanel);
+			System.exit(0);
+		}
+		else if(s.equals("back")){
+			if(currentPanel.getClass().getName().equals("ChoosePlayTypeMenu")){
+				((ChoosePlayTypeMenu)currentPanel).dispose();
+				currentPanel = new MainMenu();
+			}
+			else if(currentPanel.getClass().getName().equals("HighScoresMenu")){
+				((HighScoresMenu)currentPanel).dispose();
+				currentPanel = new MainMenu();
+			}
+			else if(currentPanel.getClass().getName().equals("HelpMenu")){
+				((HelpMenu)currentPanel).dispose();
+				currentPanel = new MainMenu();
+			}
+			return ((MainMenu)currentPanel).getButtons();
+		}
+		else if(s.equals("pause")){
+			pausePanel = currentPanel;
+			((GameEngine)pausePanel).setVisible(false);
+			// GameEngine'in içindeki gameLoopu durdur.
+			currentPanel = null;
+		}
+		else if(s.equals("backToGame")){
+			((InGameMenu)currentPanel).dispose();
+			currentPanel = pausePanel;
+			((GameEngine)currentPanel).setVisible(true);
+			// GameEngine'in içindeki gameLoopu devam ettir.
+		}
+		
+	}
+	public void setcurrentPanelHolder(String s, int level){
+		
+	}
+	
+	public void openFrames(){
+		
+	}
+	public Object getcurrentPanelHolder(){
+		return this. currentPanel;
+	}
+	
+}
