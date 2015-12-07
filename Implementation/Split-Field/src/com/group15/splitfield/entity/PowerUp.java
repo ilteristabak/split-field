@@ -8,6 +8,6 @@ public class PowerUp extends GameObject {
 		this.name = name;
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	
 }

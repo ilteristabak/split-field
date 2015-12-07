@@ -4,8 +4,8 @@ public class LevelManager {
 	private int allLevels[][][];
 	private FileManagerForLevel fileManager;
 	
-	public LevelManager(){
-		fileManager = new FileManagerForLevel("","");
+	public LevelManager(String fileName){
+		fileManager = new FileManagerForLevel(fileName);
 		allLevels = fileManager.loadLevels();
 	}
 	

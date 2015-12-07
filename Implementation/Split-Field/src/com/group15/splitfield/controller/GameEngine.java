@@ -12,7 +12,7 @@ public class GameEngine extends JPanel {
 	
 	public GameEngine(String chooseType) {
 		// TODO Auto-generated constructor stub
-		levelManager = new LevelManager();
+		levelManager = new LevelManager("");
 		score = 0;
 		if(chooseType.equals("new")){
 			

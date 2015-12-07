@@ -1,0 +1,111 @@
+package com.group15.splitfield.gui;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import javax.swing.*;
+
+public class MainMenu extends Menu{
+	JLabel logo;
+	JButton play;
+	JButton highScores;
+	JButton help;
+	JButton exit;
+	static JFrame frame;
+	public MainMenu() {
+		logo= new JLabel("Split-Field");
+		play = new JButton("Play Game");
+		highScores =  new JButton("High Scores");
+		help = new JButton("Help");
+		exit =  new JButton("Exit");
+		play.setActionCommand("choosePlayType");
+		highScores.setActionCommand("highScores");
+		help.setActionCommand("help");
+		exit.setActionCommand("exit");
+		//setTitle("Main Menu");
+		logo.setFont( new Font("Arial", 0, 80));
+		play.setFont( new Font("Arial", 0, 40));
+		highScores.setFont( new Font("Arial", 0, 40));
+		help.setFont( new Font("Arial", 0, 40));
+		exit.setFont( new Font("Arial", 0, 40));
+		
+		play.setForeground(new Color(240,13,13));
+		highScores.setForeground(new Color(240,13,13));
+		help.setForeground(new Color(240,13,13));
+		exit.setForeground(new Color(240,13,13));
+		logo.setForeground(new Color(255,255,255));
+		
+		play.setPreferredSize( new Dimension((int)getSize().getWidth()/5,(int)getSize().getHeight()/10));
+		highScores.setPreferredSize( new Dimension((int)getSize().getWidth()/5,(int)getSize().getHeight()/10));
+		help.setPreferredSize( new Dimension((int)getSize().getWidth()/5,(int)getSize().getHeight()/10));
+		exit.setPreferredSize( new Dimension((int)getSize().getWidth()/5,(int)getSize().getHeight()/10));
+		
+		play.setContentAreaFilled(false);
+		play.setBorderPainted(false);
+		play.setFocusPainted(false);
+		
+		highScores.setContentAreaFilled(false);
+		highScores.setBorderPainted(false);
+		highScores.setFocusPainted(false);
+		
+		help.setContentAreaFilled(false);
+		help.setBorderPainted(false);
+		help.setFocusPainted(false);
+		
+		exit.setContentAreaFilled(false);
+		exit.setBorderPainted(false);
+		exit.setFocusPainted(false);
+		
+		//play.addActionListener( new ButtonListener());
+//		highScores.addActionListener( new ButtonListener());
+//		exit.addActionListener( new ButtonListener());
+//		help.addActionListener( new ButtonListener());
+//		
+		
+		add(logo);
+		add(play);
+		add(highScores);
+		add(help);
+		add(exit);
+		
+		Insets insets = getInsets();
+		
+		Dimension size = logo.getPreferredSize();
+		logo.setBounds((int)getSize().getWidth()/3 + insets.left, 50 + insets.top,
+		             size.width, size.height);
+		
+		
+		size = play.getPreferredSize();
+		play.setBounds((int)getSize().getWidth()/3+50 + insets.left, 200 + insets.top,
+		             size.width, size.height);
+		
+		size = highScores.getPreferredSize();
+		help.setBounds((int)getSize().getWidth()/3+50 + insets.left, 300 + insets.top,
+		             size.width, size.height);
+		
+		size = exit.getPreferredSize();
+		highScores.setBounds((int)getSize().getWidth()/3+50 + insets.left, 400 + insets.top,
+		             size.width , size.height );
+		size = exit.getPreferredSize();
+		exit.setBounds((int)getSize().getWidth()/3+50 + insets.left, 500 + insets.top,
+		             size.width , size.height );
+		
+		
+		
+		
+	}
+	public Queue<JButton> getButtons(){
+		Queue<JButton> q = new LinkedList<JButton>();
+		q.add(play);
+		q.add(highScores);
+		q.add(help);
+		q.add(exit);
+		return q;
+	}
+}

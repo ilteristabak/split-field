@@ -17,7 +17,6 @@ public class MainMenu extends Menu{
 	JButton highScores;
 	JButton help;
 	JButton exit;
-	static JFrame frame;
 	public MainMenu() {
 		logo= new JLabel("Split-Field");
 		play = new JButton("Play Game");
@@ -95,9 +94,6 @@ public class MainMenu extends Menu{
 		size = exit.getPreferredSize();
 		exit.setBounds((int)getSize().getWidth()/3+50 + insets.left, 500 + insets.top,
 		             size.width , size.height );
-		
-		
-		
 		
 	}
 	public Queue<JButton> getButtons(){

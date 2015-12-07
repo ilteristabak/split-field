@@ -1,12 +1,14 @@
 package com.group15.splitfield.controller;
 
 public class BackgroundManager {
-	int pixels[][];
-	double cutRatio;
+	private int pixels[][];
+	private double totalCutRatio;
+	private double currentCutRatio;
 	
 	public BackgroundManager(){
 		pixels = new int[800][600];
-		cutRatio = 0;
+		totalCutRatio = 0;
+		currentCutRatio = 0;
 	}
 	public void updatePixels(int p[][]){
 		this.pixels = p;
@@ -20,8 +22,8 @@ public class BackgroundManager {
 	public boolean isCutProper(){
 		return true;
 	}
-	public boolean isExceedCutRatio(){
-		if(cutRatio > 80)
+	public boolean exceedCutRatio(){
+		if(totalCutRatio > 80)
 			return true;
 		else
 			return false;

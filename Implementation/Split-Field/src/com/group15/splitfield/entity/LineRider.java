@@ -18,6 +18,11 @@ public class LineRider extends GameObject{
 	
 	public void incrementVelocityBy(int difference){
 		velocity += difference;
+		if(velocity < 0)
+			velocity = 0;
+	}
+	public int getVelocity(){
+		return velocity;
 	}
 	
 	public void decrementNoOfLives(){
@@ -38,5 +43,11 @@ public class LineRider extends GameObject{
 	public void updatePosition(int x, int y){
 		positionX = x;
 		positionY = y;
+	}
+	public int getPositionX(){
+		return positionX;
+	}
+	public int getPositionY(){
+		return positionY;
 	}
 }

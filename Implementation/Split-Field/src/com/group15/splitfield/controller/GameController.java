@@ -15,9 +15,10 @@ public class GameController implements ActionListener, KeyListener {
 	private BackgroundManager backgroundManager;
 	
 	
-	public GameController(String saveLoadFileDirectory, String saveLoadFileName){
-		fileManager = new FileManagerForSave(saveLoadFileDirectory, saveLoadFileName);
-		screenManager = new GameScreenManager();
+	public GameController(String saveFileName,GameScreenManager screenManager,BackgroundManager backgroundManager){
+		this.screenManager = screenManager;
+		this.backgroundManager = backgroundManager;
+		fileManager = new FileManagerForSave(saveFileName);
 		Queue<JButton> listOfButtons = screenManager.setCurrentPanelHolder("mainMenu");
 		while(!listOfButtons.isEmpty()){
 			listOfButtons.remove().addActionListener(this);

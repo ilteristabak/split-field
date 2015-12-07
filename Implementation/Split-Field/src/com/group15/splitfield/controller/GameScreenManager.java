@@ -12,8 +12,8 @@ import com.group15.splitfield.gui.*;
 
 public class GameScreenManager extends JFrame {
 	
-	Object currentPanel;
-	Object pausePanel;
+	private Object currentPanel;
+	private Object pausePanel;
 	
 	//constructor
 	public GameScreenManager(){
@@ -123,7 +123,7 @@ public class GameScreenManager extends JFrame {
 			return (GameEngine)currentPanel;
 		}
 	}
-	public void openFrames(){
+	public void closeFrames(){
 		
 	}
 	public Object getcurrentPanelHolder(){
