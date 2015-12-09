@@ -1,0 +1,12 @@
+package com.group15.splitfield.entity;
+
+import javax.swing.ImageIcon;
+
+public class ClearMinors extends PowerUp{
+	private ImageIcon clearMinorsImage;
+	
+	public ClearMinors(int positionX, int positionY, String name) {
+		super(positionX, positionY, name);
+		clearMinorsImage = new ImageIcon("ClearMinors.png");
+	}
+}

@@ -1,0 +1,49 @@
+package com.group15.splitfield.entity;
+
+public class MinorEnemy1 extends Enemy{
+
+	private final int LENGTH = 10;
+	private final int WIDTH = 10;
+	private final int DAMAGE = 10;
+	private final int VELOCITY = 10;
+	private int health;
+	
+	public MinorEnemy1(int positionX, int positionY, String name ) {
+		super(positionX, positionY,name);
+		// TODO Auto-generated constructor stub
+		health = 100;
+	}
+
+	@Override
+	public String getName(){
+		return name;
+	}
+	@Override
+	public void updatePosition(int x, int y){
+		positionX = x;
+		positionY = y;
+	}
+	
+	public int getVelocity(){
+		return VELOCITY;
+	}
+	
+	public int getDamage(){
+		return DAMAGE;
+	}
+	
+	public int getHealth(){
+		return health;
+	}
+	
+	public void decrementHealthBy(int damage){
+		health -= damage;
+	}
+	public int getLength(){
+		return LENGTH;
+	}
+	public int getWidth(){
+		return WIDTH;
+	}
+	
+}

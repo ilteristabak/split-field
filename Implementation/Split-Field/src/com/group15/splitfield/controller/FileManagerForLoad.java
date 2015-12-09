@@ -1,21 +1,48 @@
 package com.group15.splitfield.controller;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class FileManagerForLoad extends FileManager {
 
+private int lastLevel;
+	
 	public FileManagerForLoad(String fileName) {
 		super(fileName);
-		// TODO Auto-generated constructor stub
+		lastLevel = 0;
 	}
-	
-	public int loadGame(){
-		
-		return 1;
-	}
-
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+	
+		String content = null;
+	    File file = new File(super.fileName); 
+	    FileReader reader = null;
+	    try {
+	        reader = new FileReader(file);
+	        char[] chars = new char[(int) file.length()];
+	        reader.read(chars);
+	        content = new String(chars);
+	        reader.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        if(reader !=null){try {
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+	    }
+	    lastLevel = Integer.parseInt(content);
 		
+	}
+
+	
+	public int getLastLevel() throws IOException {
+		// TODO Auto-generated method stub
+		execute();
+		return lastLevel;
 	}
 
 }

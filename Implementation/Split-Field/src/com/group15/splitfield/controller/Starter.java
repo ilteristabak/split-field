@@ -5,6 +5,5 @@ public class Starter {
 		GameScreenManager screenManager = new GameScreenManager();
 		BackgroundManager backgroundManager = new BackgroundManager();
 		GameController controller = new GameController("",screenManager, backgroundManager);
-		
 	}
 }

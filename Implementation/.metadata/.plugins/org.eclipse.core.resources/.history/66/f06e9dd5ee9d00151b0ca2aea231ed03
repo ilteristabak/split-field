@@ -1,0 +1,89 @@
+package com.group15.splitfield.controller;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Queue;
+
+import javax.swing.JButton;
+
+public class GameController implements ActionListener, KeyListener {
+
+	private FileManagerForSave fileManager;
+	private GameScreenManager screenManager;
+	private BackgroundManager backgroundManager;
+	
+	
+	public GameController(String saveFileName,GameScreenManager screenManager,BackgroundManager backgroundManager){
+		this.screenManager = screenManager;
+		this.backgroundManager = backgroundManager;
+		fileManager = new FileManagerForSave(saveFileName);
+		Queue<JButton> listOfButtons = screenManager.setCurrentPanelHolder("mainMenu");
+		while(!listOfButtons.isEmpty()){
+			listOfButtons.remove().addActionListener(this);
+		}
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getKeyCode() == 37){
+			screenManager.getGameEngine().updatePosition(-5,0);
+			screenManager.getGameEngine().repaint();
+			screenManager.repaint();
+		}
+		if(e.getKeyCode() == 38){
+			screenManager.getGameEngine().updatePosition(0,-5);
+			screenManager.getGameEngine().repaint();
+			screenManager.repaint();
+		}
+		if(e.getKeyCode() == 39){
+			screenManager.getGameEngine().updatePosition(5,0);
+			screenManager.getGameEngine().repaint();
+			screenManager.repaint();
+		}
+		if(e.getKeyCode() == 40){
+			screenManager.getGameEngine().updatePosition(0,5);
+			screenManager.getGameEngine().repaint();
+			screenManager.repaint();
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getActionCommand().equals("saveGame")){
+			
+		}
+		else if(e.getActionCommand().equals("newGame")){
+			screenManager.setCurrentPanelHolderFor("new").addKeyListenerToGameEngine(this);
+			screenManager.getGameEngine().setFocusable(true);
+			screenManager.getGameEngine().requestFocusInWindow();
+		}
+		else if(e.getActionCommand().equals("loadGame")){
+			screenManager.setCurrentPanelHolderFor("load").addKeyListenerToGameEngine(this);
+			screenManager.getGameEngine().setFocusable(true);
+			screenManager.getGameEngine().requestFocusInWindow();
+		}
+		else{
+			Queue<JButton> listOfButtons = screenManager.setCurrentPanelHolder(e.getActionCommand());
+			while(!listOfButtons.isEmpty()){
+				listOfButtons.remove().addActionListener(this);
+			}
+		}
+	}
+
+}

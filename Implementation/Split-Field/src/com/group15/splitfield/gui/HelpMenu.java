@@ -27,10 +27,10 @@ public class HelpMenu extends Menu{
 		content3 = new JLabel("LaserCut: Z");
 		super.back.setActionCommand("back");
 		header.setFont( new Font("Arial", 0, 80));
-		header2.setFont( new Font("Arial", 0, 80));
-		content1.setFont( new Font("Arial", 0, 80));
-		content2.setFont( new Font("Arial", 0, 80));
-		content3.setFont( new Font("Arial", 0, 80));
+		header2.setFont( new Font("Arial", 0, 40));
+		content1.setFont( new Font("Arial", 0, 40));
+		content2.setFont( new Font("Arial", 0, 40));
+		content3.setFont( new Font("Arial", 0, 40));
 		
 		back.setPreferredSize( new Dimension((int)getSize().getWidth()/12,(int)getSize().getHeight()/12));
 		//back.addActionListener(new ButtonListener());
@@ -47,24 +47,30 @@ public class HelpMenu extends Menu{
 		add(content3);
 		add(back);
 		Insets insets = getInsets();
-				
+			
+		header.setForeground(Color.white);
+		header2.setForeground(Color.red);
+		content1.setForeground(Color.red);
+		content2.setForeground(Color.red);
+		content3.setForeground(Color.red);
+		
 		Dimension size = header.getPreferredSize();
-		header.setBounds((int)getSize().getWidth()/3 + insets.left, 50 + insets.top,
+		header.setBounds((int)getSize().getWidth()/3+50 + insets.left, 50 + insets.top,
 		             size.width, size.height);
 		
 		size = header2.getPreferredSize();
-		header2.setBounds((int)getSize().getWidth()/3+50 + insets.left, 200 + insets.top,
+		header2.setBounds((int)getSize().getWidth()/3+50 + insets.left, 150 + insets.top,
 		             size.width, size.height);
 		
 		size = content1.getPreferredSize();
-		content1.setBounds((int)getSize().getWidth()/3+50 + insets.left, 200 + insets.top,
+		content1.setBounds((int)getSize().getWidth()/3+50 + insets.left, 250 + insets.top,
 		             size.width, size.height);
 		
 		size = content2.getPreferredSize();
-		content2.setBounds((int)getSize().getWidth()/3+50 + insets.left, 200 + insets.top,
+		content2.setBounds((int)getSize().getWidth()/3+50 + insets.left, 350 + insets.top,
 		             size.width, size.height);
 		size = content3.getPreferredSize();
-		content3.setBounds((int)getSize().getWidth()/3+50 + insets.left, 200 + insets.top,
+		content3.setBounds((int)getSize().getWidth()/3+50 + insets.left, 450 + insets.top,
 		             size.width, size.height);
 		size = back.getPreferredSize();
 		back.setBounds(10 + insets.left, 10 + insets.top,

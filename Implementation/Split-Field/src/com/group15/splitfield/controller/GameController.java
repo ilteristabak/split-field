@@ -33,6 +33,33 @@ public class GameController implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getKeyCode() == 37){
+			screenManager.getGameEngine().updatePosition(-10,0);
+			screenManager.getGameEngine().repaint();
+			screenManager.repaint();
+		}
+		if(e.getKeyCode() == 38){
+			screenManager.getGameEngine().updatePosition(0,-10);
+			screenManager.getGameEngine().repaint();
+			screenManager.repaint();
+		}
+		if(e.getKeyCode() == 39){
+			screenManager.getGameEngine().updatePosition(10,0);
+			screenManager.getGameEngine().repaint();
+			screenManager.repaint();
+		}
+		if(e.getKeyCode() == 40){
+			screenManager.getGameEngine().updatePosition(0,10);
+			screenManager.getGameEngine().repaint();
+			screenManager.repaint();
+		}
+		if(e.getKeyCode() == 80){
+			screenManager.getGameEngine().pauseGame();
+			Queue<JButton> listOfButtons = screenManager.setCurrentPanelHolder("pause");
+			while(!listOfButtons.isEmpty()){
+				listOfButtons.remove().addActionListener(this);
+			}
+		}
 		
 	}
 
@@ -49,14 +76,26 @@ public class GameController implements ActionListener, KeyListener {
 			
 		}
 		else if(e.getActionCommand().equals("newGame")){
-			screenManager.setCurrentPanelHolderFor("new").addKeyListener(this);
+			screenManager.setCurrentPanelHolderFor("new").addKeyListenerToGameEngine(this);
+			screenManager.getGameEngine().setFocusable(true);
+			screenManager.getGameEngine().requestFocusInWindow();
+			screenManager.getGameEngine().setBackgroundManager(backgroundManager);
 		}
 		else if(e.getActionCommand().equals("loadGame")){
-			screenManager.setCurrentPanelHolderFor("load").addKeyListener(this);
+			screenManager.setCurrentPanelHolderFor("load").addKeyListenerToGameEngine(this);
+			screenManager.getGameEngine().setFocusable(true);
+			screenManager.getGameEngine().requestFocusInWindow();
+			screenManager.getGameEngine().setBackgroundManager(backgroundManager);
+		}
+		else if(e.getActionCommand().equals("continueGame")){
+			screenManager.setCurrentPanelHolder(e.getActionCommand());
+			screenManager.getGameEngine().setFocusable(true);
+			screenManager.getGameEngine().requestFocusInWindow();
+			screenManager.getGameEngine().continueGame();
 		}
 		else{
 			Queue<JButton> listOfButtons = screenManager.setCurrentPanelHolder(e.getActionCommand());
-			while(!listOfButtons.isEmpty()){
+			while(listOfButtons != null && !listOfButtons.isEmpty()){
 				listOfButtons.remove().addActionListener(this);
 			}
 		}

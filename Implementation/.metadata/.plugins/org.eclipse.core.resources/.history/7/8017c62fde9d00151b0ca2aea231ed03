@@ -1,0 +1,20 @@
+package com.group15.splitfield.entity;
+
+import java.awt.Graphics;
+
+public abstract class PowerUp extends GameObject {
+	private String name;
+	
+	public PowerUp(int positionX, int positionY, String name) {
+		super(positionX, positionY);
+		this.name = name;
+		// TODO Auto-generated constructor stub
+	}
+	public String getName() {
+		return name;
+	}
+	@Override
+	public abstract void draw(Graphics g);
+	
+	
+}

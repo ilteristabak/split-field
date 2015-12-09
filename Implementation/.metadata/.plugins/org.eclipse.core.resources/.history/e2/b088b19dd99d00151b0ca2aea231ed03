@@ -1,0 +1,39 @@
+package com.group15.splitfield.entity;
+
+public class GameObjectFactory {
+
+	public GameObjectFactory(){
+		
+	}
+	public GameObject getGameObject(int number ,int positionX, int positionY){
+		if(gameObjectName.equals("MajorEnemy1")){
+			return new MajorEnemy1(positionX, positionY, gameObjectName);
+		}
+		else if(gameObjectName.equals("MajorEnemy2")){
+			return new MajorEnemy2(positionX, positionY, gameObjectName);
+		}
+		else if(gameObjectName.equals("MinorEnemy1")){
+			return new MinorEnemy1(positionX, positionY, gameObjectName);
+		}
+		else if(gameObjectName.equals("MinorEnemy2")){
+			return new MinorEnemy2(positionX, positionY, gameObjectName);
+		}
+		else if(gameObjectName.equals("LineRider")){
+			return new LineRider(positionX, positionY);
+		}
+		else if(gameObjectName.equals("Speed")){
+			return new Speed(positionX, positionY, gameObjectName);
+		}
+		else if(gameObjectName.equals("Laser")){
+			return new Laser(positionX, positionY, gameObjectName);
+		}
+		else if(gameObjectName.equals("PauseShieldDecrement")){
+			return new PauseShieldDecrement(positionX, positionY, gameObjectName);
+		}
+		else if(gameObjectName.equals("ClearMinors")){
+			return new ClearMinors(positionX, positionY, gameObjectName);
+		}
+		else 
+			return null;
+	}
+}

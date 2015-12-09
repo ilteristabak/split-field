@@ -1,6 +1,8 @@
 package com.group15.splitfield.entity;
 
-public class PowerUp extends GameObject {
+import java.awt.Graphics;
+
+public abstract class PowerUp extends GameObject {
 	private String name;
 	
 	public PowerUp(int positionX, int positionY, String name) {
@@ -8,6 +10,8 @@ public class PowerUp extends GameObject {
 		this.name = name;
 		// TODO Auto-generated constructor stub
 	}
-	
+	public String getName() {
+		return name;
+	}
 	
 }

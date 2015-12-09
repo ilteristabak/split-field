@@ -1,12 +1,19 @@
 package com.group15.splitfield.entity;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 public class Laser extends PowerUp {
 	private static final int DAMAGE = 100;
 	private static final int DURATION = 120;
+	private ImageIcon laserImage;
 	
 	public Laser(int positionX, int positionY, String name) {
 		super(positionX, positionY, name);
-		// TODO Auto-generated constructor stub
+		laserImage = new ImageIcon("Laser.png");
 	}
 	
 	public int getDamage(){
@@ -14,6 +21,12 @@ public class Laser extends PowerUp {
 	}
 	public int getDuration(){
 		return DURATION;
+	}
+	@Override
+	public void draw(Graphics g) {
+		Image image = laserImage.getImage();
+		g.drawImage(image, positionX - 1, positionY - 1, null);
+		g.setColor(Color.BLACK);
 	}
 
 }

@@ -7,6 +7,11 @@ import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -17,8 +22,8 @@ import javax.swing.JLabel;
 public class HighScoresMenu extends Menu{
 	
 	JLabel logo;
-	String holdersList[];
-	double highScoresList[];
+	ArrayList<String> holdersList;
+	ArrayList<Double> highScoresList;
 	
 	public HighScoresMenu() {
 		
@@ -49,29 +54,52 @@ public class HighScoresMenu extends Menu{
 		back.setBounds(10 + insets.left, 10 + insets.top,
 		             size.width, size.height);
 		
-		// GET FROM FILE MANAGER
-		int sizex = 3;
-		// initialize array!!!!!!!!!!!!!!!!!
-		holdersList = new String[sizex];
-		highScoresList = new double[sizex];
-		holdersList[0] ="dsafasdf";
-		holdersList[1] ="dsfaas";
-		holdersList[2] ="dscdsc";
-		highScoresList[0]=300;
-		highScoresList[1]=400;
-		highScoresList[2]=500;
+	
 	}
 	@Override
 	public void paint(Graphics g){
 		super.paint(g);
+		getHighScoresList();
 		g.setColor(Color.cyan);
 		int fontSize= 40;
 		g.setFont(new Font("Arial", 0, fontSize) );
-		
-		for(int i = 0; i < holdersList.length;i++) {
-			g.drawString(String.format("%10s",(i+1)+") "+holdersList[i] +"\t" +highScoresList[i]), 400, 200+i*100+fontSize);
+		if(holdersList != null) {
+			for(int i = 0; i < holdersList.size();i++) {
+				g.drawString(String.format("%5s",(i+1)+") "+holdersList.get(i)+"   " +highScoresList.get(i)), 400, 200+i*100+fontSize);
+			}
 		}
+	}
+	public void getHighScoresList() {
 		
+		holdersList = new ArrayList<String>();
+		highScoresList = new ArrayList<Double>();
+		// TODO Auto-generated method stub
+		String content = null;
+	    File file = new File("highScores.txt"); 
+	    FileReader reader = null;
+	    try {
+	        reader = new FileReader(file);
+	        BufferedReader bReader = new BufferedReader(reader);
+	        while(bReader!= null) {
+	        	String objects = bReader.readLine();
+	        	if(objects != null) {
+		        	String[] highScoreEntity = objects.split(" ");
+		        	holdersList.add(highScoreEntity[0]);
+		        	highScoresList.add(Double.parseDouble(highScoreEntity[1]));
+	        	}
+	        	else
+	        		break;
+	        }// end of while
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        if(reader !=null){try {
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+	    }
 	}
 	public Queue<JButton> getButtons(){
 		Queue<JButton> q = new LinkedList<JButton>();

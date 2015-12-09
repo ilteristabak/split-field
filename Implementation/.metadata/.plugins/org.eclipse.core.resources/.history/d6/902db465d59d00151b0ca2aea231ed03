@@ -1,0 +1,90 @@
+package com.group15.splitfield.controller;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class FileManagerForLevel extends FileManager {
+
+	private ArrayList<int[][]> allLevels;
+	
+	public FileManagerForLevel(String fileName) {
+		super(fileName);
+		allLevels = new ArrayList<int[][]>();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public ArrayList<int[][]> getAllLevels(){
+		
+		execute();
+		return allLevels;
+	}
+
+	@Override
+	protected void execute() {
+		// TODO Auto-generated method stub
+		String content = null;
+	    File file = new File(super.fileName); 
+	    FileReader reader = null;
+	    int[][] levelProperties = null;
+	    try {
+	        reader = new FileReader(file);
+	        BufferedReader bReader = new BufferedReader(reader);
+	        while(bReader!= null) {
+	        	levelProperties = null;
+	        	String objects = bReader.readLine();
+	        	if(objects != null) {
+		        	String[] listNoofObjS = objects.split(" ");
+		        	int[] listNoofObj = new int[listNoofObjS.length];
+		        	
+		        	for(int i = 0; i < listNoofObjS.length; i++) {
+		        		listNoofObj[i] = Integer.parseInt(listNoofObjS[i]);
+		        	}
+		        	
+		        	int biggest = 0;
+		        	
+		        	for(int i = 0; i < listNoofObj.length; i++) {
+		        		if(listNoofObj[i] >= biggest)
+		        			biggest = listNoofObj[i];
+		        	}
+		        	System.out.println("biggest:" + biggest);
+		        	levelProperties = new int[biggest+1][8];
+		        	for(int j = 0; j < 8; j++) {
+		        			levelProperties[0][j] = listNoofObj[j];
+		        			System.out.println(listNoofObj[j]);
+		        	
+		        	}
+		        	for(int i = 1; i <= biggest; i++){
+		        		objects = bReader.readLine();
+		        		listNoofObjS = objects.split(" ");
+		        		for(int j = 0; j < 8; j++) {
+		        			System.out.println(levelProperties[0][j]+":");
+		        			if(levelProperties[0][j] >= i)
+		        				levelProperties[i][j] = Integer.parseInt(listNoofObjS[j]);
+		        			else
+		        				levelProperties[i][j] = -1;
+		        			
+		        			System.out.println(listNoofObjS[j]);
+		        		}
+		        	}
+		        	if(levelProperties != null) {
+		        		allLevels.add(levelProperties);
+		        	}
+	        	}
+	        	else
+	        		break;
+	        }// end of while
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        if(reader !=null){try {
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+	    }
+	}
+}

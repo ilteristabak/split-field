@@ -23,7 +23,7 @@ public class BackgroundManager {
 		return true;
 	}
 	public boolean exceedCutRatio(){
-		if(totalCutRatio > 80)
+		if(totalCutRatio >= 80)
 			return true;
 		else
 			return false;

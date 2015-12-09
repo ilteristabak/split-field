@@ -1,6 +1,8 @@
 package com.group15.splitfield.entity;
 
-public class GameObject {
+import java.awt.Graphics;
+
+public abstract class GameObject {
 	protected int positionX;
 	protected int positionY;
 	
@@ -8,4 +10,11 @@ public class GameObject {
 		this.positionX = positionX;
 		this.positionY = positionY;
 	}
+	public int getPositionX() {
+		return positionX;
+	}
+	public int getPositionY() {
+		return positionY;
+	}
+	public abstract void draw(Graphics g);
 }

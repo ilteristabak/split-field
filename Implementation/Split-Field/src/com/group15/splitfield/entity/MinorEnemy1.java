@@ -1,11 +1,24 @@
 package com.group15.splitfield.entity;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 public class MinorEnemy1 extends Enemy{
 
-	public MinorEnemy1(int positionX, int positionY, int length, int width, int velocity, String name, int health,
-			int damage) {
-		super(positionX, positionY, length, width, velocity, name, health, damage);
-		// TODO Auto-generated constructor stub
+	private final int LENGTH = 10;
+	private final int WIDTH = 10;
+	private final int DAMAGE = 10;
+	private final int VELOCITY = 10;
+	private int health;
+	private ImageIcon minorEnemy1Image;
+	
+	public MinorEnemy1(int positionX, int positionY, String name ) {
+		super(positionX, positionY,name);
+		minorEnemy1Image = new ImageIcon("MinorEnemy1.png");
+		health = 100;
 	}
 
 	@Override
@@ -13,37 +26,37 @@ public class MinorEnemy1 extends Enemy{
 		return name;
 	}
 	@Override
-	public int getPositionX(){
-		return positionX;
-	}
-	@Override
-	public int getPositionY(){
-		return positionY;
-	}
-	@Override
 	public void updatePosition(int x, int y){
 		positionX = x;
 		positionY = y;
 	}
-	@Override
+	
 	public int getVelocity(){
-		return velocity;
+		return VELOCITY;
 	}
-	@Override
-	public void incrementVelocityBy(int diff){
-		velocity += diff;
-	}
-	@Override
-	public void decrementHealthBy(int damage){
-		health -= damage;
-	}
-	@Override
+	
 	public int getDamage(){
-		return damage;
+		return DAMAGE;
 	}
-	@Override
+	
 	public int getHealth(){
 		return health;
 	}
 	
+	public void decrementHealthBy(int damage){
+		health -= damage;
+	}
+	public int getLength(){
+		return LENGTH;
+	}
+	public int getWidth(){
+		return WIDTH;
+	}
+	
+	@Override
+	public void draw(Graphics g) {
+		Image image = minorEnemy1Image.getImage();
+		g.drawImage(image, positionX - WIDTH/2, positionY - LENGTH/2, null);
+		g.setColor(Color.BLACK);
+	}
 }

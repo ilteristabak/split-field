@@ -1,5 +1,11 @@
 package com.group15.splitfield.entity;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 public class LineRider extends GameObject{
 
 	private static final int LENGTH = 30;
@@ -7,10 +13,12 @@ public class LineRider extends GameObject{
 	private int velocity;
 	private int noOfLives;
 	private int health;
+	private ImageIcon lineRiderImage;
 	
 	public LineRider(int positionX, int positionY) {
 		super(positionX, positionY);
 		// TODO Auto-generated constructor stub
+		lineRiderImage = new ImageIcon("LineRider.png");
 		velocity = 20;
 		noOfLives = 3;
 		health = 100;
@@ -40,14 +48,15 @@ public class LineRider extends GameObject{
 	public int getNoOfLives(){
 		return noOfLives;
 	}
-	public void updatePosition(int x, int y){
-		positionX = x;
-		positionY = y;
+	public void updatePosition(int positionX, int positionY){
+		this.positionX = positionX;
+		this.positionY = positionY;
 	}
-	public int getPositionX(){
-		return positionX;
-	}
-	public int getPositionY(){
-		return positionY;
+
+	@Override
+	public void draw(Graphics g) {
+		Image image = lineRiderImage.getImage();
+		g.drawImage(image, positionX - WIDTH/2, positionY - LENGTH/2, null);
+		g.setColor(Color.BLACK);
 	}
 }

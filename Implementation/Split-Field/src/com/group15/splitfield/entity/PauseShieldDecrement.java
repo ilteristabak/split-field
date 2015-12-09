@@ -1,15 +1,28 @@
 package com.group15.splitfield.entity;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 public class PauseShieldDecrement extends PowerUp{
 
 	private static final int DURATION = 60;
+	private ImageIcon pauseShieldDecrementImage;
 	
 	public PauseShieldDecrement(int positionX, int positionY, String name) {
 		super(positionX, positionY, name);
-		// TODO Auto-generated constructor stub
+		pauseShieldDecrementImage = new ImageIcon("PauseShieldDecrement.png");
 	}
 	
 	public int getDuration(){
 		return DURATION;
 	}	
+	@Override
+	public void draw(Graphics g) {
+		Image image = pauseShieldDecrementImage.getImage();
+		g.drawImage(image, positionX - 1, positionY - 1, null);
+		g.setColor(Color.BLACK);
+	}
 }

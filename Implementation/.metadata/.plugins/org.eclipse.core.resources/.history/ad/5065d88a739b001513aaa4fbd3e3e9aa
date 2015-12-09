@@ -1,7 +1,0 @@
-package com.group15.splitfield.controller;
-
-import javax.swing.JPanel;
-
-public class GameEngine extends JPanel {
-
-}

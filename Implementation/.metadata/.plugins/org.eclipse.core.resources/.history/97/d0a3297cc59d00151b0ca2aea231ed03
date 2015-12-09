@@ -1,0 +1,14 @@
+package com.group15.splitfield.entity;
+
+public class GameObjectFactory {
+
+	public GameObjectFactory(){
+		
+	}
+	public GameObject getGameObject(String gameObjectName,int positionX, int positionY){
+		if(gameObjectName.equals("MajorEnemy1")){
+			return new MajorEnemy1(positionX, positionY, gameObjectName);
+		}
+		return null;
+	}
+}

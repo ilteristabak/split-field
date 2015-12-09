@@ -27,7 +27,7 @@ public class InGameMenu extends Menu{
 		continueB.setActionCommand("continueGame");
 		save.setActionCommand("saveGame");
 		returnToMainMenu.setActionCommand("returnToMainMenu");
-		exit.setActionCommand("exit");
+		exit.setActionCommand("exitFromInGame");
 		
 		//setTitle("Main Menu");
 		logo.setFont( new Font("Arial", 0, 80));

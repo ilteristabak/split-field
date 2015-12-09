@@ -1,0 +1,10 @@
+package com.group15.splitfield.controller;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class InformationField extends JPanel {
+	private JLabel noOfLivesLabel;
+	private JLabel scoreLabel;
+	
+}
