@@ -9,5 +9,5 @@ public abstract class Enemy extends GameObject{
 		// TODO Auto-generated constructor stub
 	}
 	public abstract String getName();
-	public abstract void updatePosition(int positionX, int positionY);
+	public abstract void updatePosition();
 }

@@ -99,5 +99,7 @@ public class GameEngine extends JPanel {
 	public void updatePosition(int x, int y){
 		gameField.updatePosition(x, y);
 	}
-	
+	public GameField getGameField(){
+		return gameField;
+	}
 }

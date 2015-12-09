@@ -1,0 +1,99 @@
+package com.group15.splitfield.entity;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+public class MinorEnemy1 extends Enemy{
+
+	private final int LENGTH = 10;
+	private final int WIDTH = 10;
+	private final int DAMAGE = 10;
+	private final int VELOCITY = 10;
+	private int positionXChange = 5;
+	private int positionYChange = 5;
+	private int health;
+	private ImageIcon minorEnemy1Image;
+	
+	public MinorEnemy1(int positionX, int positionY, String name ) {
+		super(positionX, positionY,name);
+		super.borderX = 1300;
+		super.borderY = 700;
+		minorEnemy1Image = new ImageIcon("MinorEnemy1.png");
+		health = 100;
+	}
+
+	@Override
+	public String getName(){
+		return name;
+	}
+	@Override
+	public void updatePosition(){
+		if(positionX < borderX)
+			positionX += positionXChange;
+		if(positionX >= borderX){
+			positionXChange = 0 - positionXChange;
+			positionX += positionXChange;
+		}
+		if(positionX < 0){
+			positionXChange = 0 - positionXChange;
+			positionX += positionXChange;
+		}
+			
+		if(positionY < borderY)
+			positionY += positionYChange;
+		if(positionY >= borderY){
+			positionYChange = 0 - positionYChange;
+			positionY += positionYChange;
+			
+		}
+		if(positionY < 0){
+			positionYChange = 0 - positionYChange;
+			positionY += positionYChange;
+		}
+	}
+	
+	public int getVelocity(){
+		return VELOCITY;
+	}
+	
+	public int getDamage(){
+		return DAMAGE;
+	}
+	
+	public int getHealth(){
+		return health;
+	}
+	
+	public void decrementHealthBy(int damage){
+		health -= damage;
+	}
+	public int getLength(){
+		return LENGTH;
+	}
+	public int getWidth(){
+		return WIDTH;
+	}
+	
+	@Override
+	public void draw(Graphics g) {
+		Image image = minorEnemy1Image.getImage();
+		g.drawImage(image, positionX - WIDTH/2, positionY - LENGTH/2, null);
+		g.setColor(Color.BLACK);
+	}
+
+	@Override
+	public void updatePosition(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateBorders(int x, int y) {
+		// TODO Auto-generated method stub
+		borderX = x;
+		borderY = y;
+	}
+}

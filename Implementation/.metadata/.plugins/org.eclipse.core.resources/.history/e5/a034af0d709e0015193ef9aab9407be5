@@ -1,0 +1,66 @@
+package com.group15.splitfield.entity;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+public class MajorEnemy1 extends Enemy {
+
+	private final int LENGTH = 10;
+	private final int WIDTH = 10;
+	private final int DAMAGE = 10;
+	private final int VELOCITY = 10;
+	private final int positionXChange = 10;
+	private final int positionYChange = 10;
+	private int health;
+	private ImageIcon majorEnemy1Image;
+	
+	public MajorEnemy1(int positionX, int positionY, String name ) {
+		super(positionX, positionY,name);
+		majorEnemy1Image = new ImageIcon("MajorEnemy1.png");
+		health = 100;
+	}
+
+	@Override
+	public String getName(){
+		return name;
+	}
+	@Override
+	public void updatePosition(){
+		positionX += positionXChange;
+		positionY = positionYChange;
+	}
+	
+	public int getVelocity(){
+		return VELOCITY;
+	}
+	
+	public int getDamage(){
+		return DAMAGE;
+	}
+	
+	public int getHealth(){
+		return health;
+	}
+	
+	public void decrementHealthBy(int damage){
+		health -= damage;
+	}
+	public int getLength(){
+		return LENGTH;
+	}
+	public int getWidth(){
+		return WIDTH;
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		Image image = majorEnemy1Image.getImage();
+		g.drawImage(image, positionX - WIDTH/2, positionY - LENGTH/2, null);
+		g.setColor(Color.BLACK);
+	}
+	
+
+}

@@ -6,17 +6,25 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import com.group15.splitfield.controller.BackgroundManager;
+
 public class MinorEnemy2 extends Enemy {
 	
 	private final int LENGTH = 10;
 	private final int WIDTH = 10;
 	private final int DAMAGE = 10;
 	private final int VELOCITY = 10;
+	private int positionXChange = 1;
+	private int positionYChange = 1;
 	private int health;
 	private ImageIcon minorEnemy2Image;
 	
 	public MinorEnemy2(int positionX, int positionY, String name ) {
 		super(positionX, positionY,name);
+		super.borderX1 = 1300;
+		super.borderX2 = 0;
+		super.borderY1 = 700;
+		super.borderY2 = 0;
 		minorEnemy2Image = new ImageIcon("MinorEnemy2.png");
 		health = 100;
 	}
@@ -26,9 +34,29 @@ public class MinorEnemy2 extends Enemy {
 		return name;
 	}
 	@Override
-	public void updatePosition(int x, int y){
-		positionX = x;
-		positionY = y;
+	public void updatePosition(){
+		if(positionX < borderX1)
+			positionX += positionXChange;
+		if(positionX >= borderX1){
+			positionXChange = 0 - positionXChange;
+			positionX += positionXChange;
+		}
+		if(positionX < borderX2){
+			positionXChange = 0 - positionXChange;
+			positionX += positionXChange;
+		}
+			
+		if(positionY < borderY1)
+			positionY += positionYChange;
+		if(positionY >= borderY1){
+			positionYChange = 0 - positionYChange;
+			positionY += positionYChange;
+			
+		}
+		if(positionY < borderY2){
+			positionYChange = 0 - positionYChange;
+			positionY += positionYChange;
+		}
 	}
 	
 	public int getVelocity(){
@@ -57,6 +85,28 @@ public class MinorEnemy2 extends Enemy {
 		Image image = minorEnemy2Image.getImage();
 		g.drawImage(image, positionX - WIDTH/2, positionY - LENGTH/2, null);
 		g.setColor(Color.BLACK);
+	}
+
+	@Override
+	public void updatePosition(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void updateBorders(int x1, int x2, int y1, int y2) {
+		borderX1 -= x1;
+		borderX2 += x2;
+		borderY1 -= y1;
+		borderY2 += y2;
+		
+	}
+
+	@Override
+	public void setBackgroundManager(BackgroundManager backgroundManager) {
+		// TODO Auto-generated method stub
+
+		super.backgroundManager = backgroundManager;
 	}
 	
 }

@@ -22,15 +22,19 @@ public class GameField extends JPanel implements ActionListener{
 	private Timer timer;
 	private GameEngine gameEngine;
 	private BackgroundManager backgroundManager;
+	private int borderX;
+	private int borderY;
 	
 	public GameField(GameEngine gameEngine){
 		//super();
+		borderX = 1300;
+		borderY = 700;
 		this.gameEngine = gameEngine;
 		gameObjectList = new ArrayList<GameObject>();
 		gameObjectFactory = new GameObjectFactory();
-		setBackground(Color.BLUE);
-		setSize(new Dimension(1300,500));
-		lineRider = new LineRider(650,500);
+		setBackground(Color.BLACK);
+		setSize(new Dimension(borderX,borderY));
+		lineRider = new LineRider(650,667);
 		setVisible(true);
 		timer = new Timer(10,this);
 	}
@@ -60,22 +64,28 @@ public class GameField extends JPanel implements ActionListener{
 	}
 	public void pauseGame(){
 			timer.stop();
-		
-		System.out.println("stop");
 	}
 	public void continueGame(){
 		timer.restart();
-		System.out.println("continue");
 	}
 	public void startGame(){
 		timer.start();
-		System.out.println("start");
 	}
 	public void setBackgroundManager(BackgroundManager backgroundManager){
 		this.backgroundManager = backgroundManager;
+		lineRider.setBackgroundManager(backgroundManager);
 	}
 	public void routine(){
-		System.out.println("routine");
+		for(int i = 0; i < gameObjectList.size(); i++){
+			gameObjectList.get(i).updatePosition();
+		}
+		repaint();
 	}
+	public void decrementGameFieldBy(int x, int y){
+		for(int i = 0; i < gameObjectList.size(); i++){
+			gameObjectList.get(i).updateBorders(0, x,0,y);
+		}
+	}
+	
 	
 }

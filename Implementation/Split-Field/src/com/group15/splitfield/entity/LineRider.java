@@ -6,15 +6,20 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import com.group15.splitfield.controller.BackgroundManager;
+
 public class LineRider extends GameObject{
 
 	private static final int LENGTH = 30;
 	private static final int WIDTH = 40;
+	private int borderX;
+	private int borderY;
 	private int velocity;
 	private int noOfLives;
 	private int health;
 	private ImageIcon lineRiderImage;
 	
+	//DEĞİŞMEYENİ KORDİNATI AL ESKİSİNDEN ÇIKART
 	public LineRider(int positionX, int positionY) {
 		super(positionX, positionY);
 		// TODO Auto-generated constructor stub
@@ -22,6 +27,10 @@ public class LineRider extends GameObject{
 		velocity = 20;
 		noOfLives = 3;
 		health = 100;
+		super.borderX1 = 1300;
+		super.borderX2 = 0;
+		super.borderY1 = 700;
+		super.borderY2 = 0;
 	}
 	
 	public void incrementVelocityBy(int difference){
@@ -48,9 +57,34 @@ public class LineRider extends GameObject{
 	public int getNoOfLives(){
 		return noOfLives;
 	}
-	public void updatePosition(int positionX, int positionY){
-		this.positionX = positionX;
-		this.positionY = positionY;
+	public void updatePositionWithoutSpace(int positionX, int positionY){
+		int[][] a =backgroundManager.getPixels();
+		//System.out.println(a[super.positionX + positionX][super.positionY + positionY]);
+		if(super.positionX + positionX < 1300 && super.positionY + positionY < 667 && a[super.positionX + positionX][super.positionY + positionY] == 3){
+			this.positionX += positionX;
+			this.positionY += positionY;
+		}
+		
+	}
+	public int updatePositionWithSpace(int positionX, int positionY){
+		if(positionX < 1300 && positionY < 667 && backgroundManager.getPixels()[super.positionX + positionX][super.positionY + positionY] == 0){
+			this.positionX += positionX;
+			this.positionY += positionY;
+			return 0;// not reached to edge yet
+		}
+		if(positionX < 1300 && positionY < 667  && backgroundManager.getPixels()[super.positionX + positionX][super.positionY + positionY] == 3){
+			this.positionX += positionX;
+			this.positionY += positionY;
+			return 1;// reached to an edge
+		}
+		if(positionX < 1300 && positionY < 667  && backgroundManager.getPixels()[super.positionX + positionX][super.positionY + positionY] == 2){
+			this.positionX += positionX;
+			this.positionY += positionY;
+			return 2;// reached to an edge
+		}
+		return 3;
+		
+		
 	}
 
 	@Override
@@ -58,5 +92,31 @@ public class LineRider extends GameObject{
 		Image image = lineRiderImage.getImage();
 		g.drawImage(image, positionX - WIDTH/2, positionY - LENGTH/2, null);
 		g.setColor(Color.BLACK);
+	}
+	@Override
+	public void updatePosition() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateBorders(int x1, int x2, int y1, int y2) {
+		borderX1 -= x1;
+		borderX2 += x2;
+		borderY1 -= y1;
+		borderY2 += y2;
+		
+	}
+
+	@Override
+	public void setBackgroundManager(BackgroundManager backgroundManager) {
+		// TODO Auto-generated method stub
+		super.backgroundManager = backgroundManager;
+	}
+
+	@Override
+	public void updatePosition(int x, int y) {
+		// TODO Auto-generated method stub
+		
 	}
 }
