@@ -17,7 +17,7 @@ public class GameScreenManager extends JFrame {
 	
 	//constructor
 	public GameScreenManager(){
-		setSize(new Dimension(1300,700));
+		setSize(new Dimension(1400,800));
 		getContentPane().setBackground(new Color(0,0,0));
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

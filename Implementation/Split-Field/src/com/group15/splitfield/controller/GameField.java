@@ -27,18 +27,18 @@ public class GameField extends JPanel implements ActionListener{
 	
 	public GameField(GameEngine gameEngine){
 		//super();
-		borderX = 1300;
-		borderY = 700;
+		borderX = 1400;
+		borderY = 775;
 		this.gameEngine = gameEngine;
 		gameObjectList = new ArrayList<GameObject>();
 		gameObjectFactory = new GameObjectFactory();
-		setBackground(Color.BLACK);
+		setBackground(Color.WHITE);
 		setSize(new Dimension(borderX,borderY));
-		lineRider = new LineRider(650,667);
+		lineRider = new LineRider(689,774);
 		setVisible(true);
-		timer = new Timer(10,this);
+		timer = new Timer(5,this);
+		
 	}
-	
 	public void addGameObjectToGameField(int i, int positionX, int positionY){
 		gameObjectList.add(gameObjectFactory.getGameObject(i, positionX, positionY));
 	}
@@ -50,6 +50,24 @@ public class GameField extends JPanel implements ActionListener{
 			gameObjectList.get(i).draw(g);
 		}
 		lineRider.draw(g);
+		for(int i = 0;i < 1400; i++) {
+			for(int j = 0; j < 775; j++){
+				if(backgroundManager.getPixels()[j][i] == 3){
+					g.setColor(Color.BLUE);
+					g.fillRect(i, j, 1, 1);
+				}
+				else if(backgroundManager.getPixels()[j][i] == 1){
+					
+					g.setColor(Color.BLACK);
+					g.fillRect(i, j, 1, 1);
+				}
+				else if(backgroundManager.getPixels()[j][i] == 2){
+					g.setColor(Color.RED);
+					g.fillRect(i, j, 1, 1);
+				}
+			}
+		}
+		
 	}
 	public void updatePosition(int x, int y){
 		lineRider.updatePosition(lineRider.getPositionX()+x,lineRider.getPositionY()+y);
@@ -74,6 +92,9 @@ public class GameField extends JPanel implements ActionListener{
 	public void setBackgroundManager(BackgroundManager backgroundManager){
 		this.backgroundManager = backgroundManager;
 		lineRider.setBackgroundManager(backgroundManager);
+		for(int i = 0; i < gameObjectList.size(); i++){
+			gameObjectList.get(i).setGameField(this);
+		}
 	}
 	public void routine(){
 		for(int i = 0; i < gameObjectList.size(); i++){
@@ -81,11 +102,17 @@ public class GameField extends JPanel implements ActionListener{
 		}
 		repaint();
 	}
-	public void decrementGameFieldBy(int x, int y){
-		for(int i = 0; i < gameObjectList.size(); i++){
-			gameObjectList.get(i).updateBorders(0, x,0,y);
-		}
-	}
 	
+	public BackgroundManager getBackgroundManager(){
+		return backgroundManager;
+	}
+	public void collision(){
+		lineRider.decrementNoOfLives();
+		lineRider.updateDirectPosition(backgroundManager.getInitialPoint().x, backgroundManager.getInitialPoint().y);
+		backgroundManager.destroyLine();
+		repaint();
+		//decrement life
+		// start line rider from initial point
+	}
 	
 }

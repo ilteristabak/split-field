@@ -7,6 +7,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import com.group15.splitfield.controller.BackgroundManager;
+import com.group15.splitfield.controller.GameField;
 
 public class MinorEnemy2 extends Enemy {
 	
@@ -21,9 +22,9 @@ public class MinorEnemy2 extends Enemy {
 	
 	public MinorEnemy2(int positionX, int positionY, String name ) {
 		super(positionX, positionY,name);
-		super.borderX1 = 1300;
+		super.borderX1 = 1400;
 		super.borderX2 = 0;
-		super.borderY1 = 700;
+		super.borderY1 = 775;
 		super.borderY2 = 0;
 		minorEnemy2Image = new ImageIcon("MinorEnemy2.png");
 		health = 100;
@@ -56,6 +57,13 @@ public class MinorEnemy2 extends Enemy {
 		if(positionY < borderY2){
 			positionYChange = 0 - positionYChange;
 			positionY += positionYChange;
+		}
+		if(gameField.getBackgroundManager().getPixels()[positionY][positionX] == 2){
+			gameField.collision();
+		}
+		if(gameField.getBackgroundManager().getPixels()[positionY][positionX] == 3){
+			positionXChange = 0 - positionXChange;
+			positionYChange = 0 - positionYChange;
 		}
 	}
 	
@@ -107,6 +115,12 @@ public class MinorEnemy2 extends Enemy {
 		// TODO Auto-generated method stub
 
 		super.backgroundManager = backgroundManager;
+	}
+
+	@Override
+	public void setGameField(GameField gameField) {
+		// TODO Auto-generated method stub
+		super.gameField = gameField;
 	}
 	
 }

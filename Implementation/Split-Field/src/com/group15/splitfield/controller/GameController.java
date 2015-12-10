@@ -41,58 +41,112 @@ public class GameController implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if(isSpacePressed){
 			if(e.getKeyCode() == 37){
-				int x = screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithSpace(-1, 0);
-				backgroundManager.addPointToLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX(), screenManager.getGameEngine().getGameField().getLineRider().getPositionY());
-				Point p = new Point();
-				p.x = screenManager.getGameEngine().getGameField().getLineRider().getPositionX();
-				p.y = screenManager.getGameEngine().getGameField().getLineRider().getPositionY();
-				lineDrawn.add(p);
-				if(x == 1)
-					backgroundManager.cutBackground(lineDrawn);
-				if(x == 2){
-					backgroundManager.removePointFromLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX() - 1, screenManager.getGameEngine().getGameField().getLineRider().getPositionY() - 1);
-					lineDrawn.remove(lineDrawn.size() - 1);
-				}
+				if((screenManager.getGameEngine().getGameField().getLineRider().getPositionX() - 1) <= 1399 && screenManager.getGameEngine().getGameField().getLineRider().getPositionY() + 0 <= 774 ){
+					int x = screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithSpace(-1, 0);
 					
-				screenManager.getGameEngine().repaint();
-				screenManager.repaint();
+						backgroundManager.addPointToLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX(), screenManager.getGameEngine().getGameField().getLineRider().getPositionY());
+						Point p = new Point();
+						p.x = screenManager.getGameEngine().getGameField().getLineRider().getPositionX();
+						p.y = screenManager.getGameEngine().getGameField().getLineRider().getPositionY();
+						lineDrawn.add(p);
+						screenManager.getGameEngine().getGameField().getBackgroundManager().addToArrayList(p);
+					
+					
+					
+					if(x == 1){
+						backgroundManager.cutBackground(lineDrawn);
+						lineDrawn.clear();
+					}
+					if(x == 2){
+						backgroundManager.removePointFromLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX() - 1, screenManager.getGameEngine().getGameField().getLineRider().getPositionY() - 1);
+						lineDrawn.remove(lineDrawn.size() - 1);
+					}
+					screenManager.getGameEngine().getGameField().repaint();
+					screenManager.getGameEngine().repaint();
+					screenManager.repaint();
+				}
+				
 			}
 			if(e.getKeyCode() == 38){
-				int x = screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithSpace(0, -1);
-				backgroundManager.addPointToLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX(), screenManager.getGameEngine().getGameField().getLineRider().getPositionY());
-				Point p = new Point();
-				p.x = screenManager.getGameEngine().getGameField().getLineRider().getPositionX();
-				p.y = screenManager.getGameEngine().getGameField().getLineRider().getPositionY();
-				lineDrawn.add(p);
-				if(x == 1)
-					backgroundManager.cutBackground(lineDrawn);
-				if(x == 2){
-					backgroundManager.removePointFromLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX() - 1, screenManager.getGameEngine().getGameField().getLineRider().getPositionY() - 1);
-					lineDrawn.remove(lineDrawn.size() - 1);
+				if((screenManager.getGameEngine().getGameField().getLineRider().getPositionX() + 0) <= 1399 && screenManager.getGameEngine().getGameField().getLineRider().getPositionY() - 1 <= 774 ){
+					int x = screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithSpace(0, -1);
+					
+						backgroundManager.addPointToLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX(), screenManager.getGameEngine().getGameField().getLineRider().getPositionY());
+						Point p = new Point();
+						p.x = screenManager.getGameEngine().getGameField().getLineRider().getPositionX();
+						p.y = screenManager.getGameEngine().getGameField().getLineRider().getPositionY();
+						lineDrawn.add(p);
+						screenManager.getGameEngine().getGameField().getBackgroundManager().addToArrayList(p);
+					
+					
+					if(x == 1){
+						backgroundManager.cutBackground(lineDrawn);
+						lineDrawn.clear();
+					}
+					if(x == 2){
+						backgroundManager.removePointFromLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX() - 1, screenManager.getGameEngine().getGameField().getLineRider().getPositionY() - 1);
+						lineDrawn.remove(lineDrawn.size() - 1);
+					}
+					//System.out.println(x);
+					screenManager.getGameEngine().getGameField().repaint();
+					screenManager.getGameEngine().repaint();
+					screenManager.repaint();
 				}
-				screenManager.getGameEngine().repaint();
-				screenManager.repaint();
+				
 				//System.out.println(p.y);
 			}
 			if(e.getKeyCode() == 39){
-				screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithSpace(1, 0);
-				backgroundManager.addPointToLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX(), screenManager.getGameEngine().getGameField().getLineRider().getPositionY());
-				Point p = new Point();
-				p.x = screenManager.getGameEngine().getGameField().getLineRider().getPositionX();
-				p.y = screenManager.getGameEngine().getGameField().getLineRider().getPositionY();
-				lineDrawn.add(p);
-				screenManager.getGameEngine().repaint();
-				screenManager.repaint();
+				if((screenManager.getGameEngine().getGameField().getLineRider().getPositionX() + 1) <= 1399 && screenManager.getGameEngine().getGameField().getLineRider().getPositionY() + 0 <= 774 ){
+					int x = screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithSpace(1, 0);
+					
+						backgroundManager.addPointToLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX(), screenManager.getGameEngine().getGameField().getLineRider().getPositionY());
+						Point p = new Point();
+						p.x = screenManager.getGameEngine().getGameField().getLineRider().getPositionX();
+						p.y = screenManager.getGameEngine().getGameField().getLineRider().getPositionY();
+						lineDrawn.add(p);
+						screenManager.getGameEngine().getGameField().getBackgroundManager().addToArrayList(p);
+					
+					
+					if(x == 1){
+						backgroundManager.cutBackground(lineDrawn);
+						lineDrawn.clear();
+					}
+					if(x == 2){
+						backgroundManager.removePointFromLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX() - 1, screenManager.getGameEngine().getGameField().getLineRider().getPositionY() - 1);
+						lineDrawn.remove(lineDrawn.size() - 1);
+					}
+					screenManager.getGameEngine().getGameField().repaint();
+					screenManager.getGameEngine().repaint();
+					screenManager.repaint();
+				}
+				
 			}
 			if(e.getKeyCode() == 40){
-				screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithSpace(0, 1);
-				backgroundManager.addPointToLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX(), screenManager.getGameEngine().getGameField().getLineRider().getPositionY());
-				Point p = new Point();
-				p.x = screenManager.getGameEngine().getGameField().getLineRider().getPositionX();
-				p.y = screenManager.getGameEngine().getGameField().getLineRider().getPositionY();
-				lineDrawn.add(p);
-				screenManager.getGameEngine().repaint();
-				screenManager.repaint();
+				if((screenManager.getGameEngine().getGameField().getLineRider().getPositionX() + 0) <= 1399 && screenManager.getGameEngine().getGameField().getLineRider().getPositionY() + 1 <= 774 ){
+					int x = screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithSpace(0, 1);
+					
+						backgroundManager.addPointToLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX(), screenManager.getGameEngine().getGameField().getLineRider().getPositionY());
+						Point p = new Point();
+						p.x = screenManager.getGameEngine().getGameField().getLineRider().getPositionX();
+						p.y = screenManager.getGameEngine().getGameField().getLineRider().getPositionY();
+						lineDrawn.add(p);
+						screenManager.getGameEngine().getGameField().getBackgroundManager().addToArrayList(p);
+					
+					
+					if(x == 1){
+						backgroundManager.cutBackground(lineDrawn);
+						lineDrawn.clear();
+					}
+						
+					if(x == 2){
+						backgroundManager.removePointFromLine(screenManager.getGameEngine().getGameField().getLineRider().getPositionX() - 1, screenManager.getGameEngine().getGameField().getLineRider().getPositionY() - 1);
+						lineDrawn.remove(lineDrawn.size() - 1);
+					}
+					screenManager.getGameEngine().getGameField().repaint();
+					screenManager.getGameEngine().repaint();
+					screenManager.repaint();
+				}
+				
 			}
 			if(e.getKeyCode() == 80){
 				screenManager.getGameEngine().pauseGame();
@@ -112,6 +166,7 @@ public class GameController implements ActionListener, KeyListener {
 				screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithoutSpace(0, -1);
 				screenManager.getGameEngine().repaint();
 				screenManager.repaint();
+				
 			}
 			if(e.getKeyCode() == 39){
 				screenManager.getGameEngine().getGameField().getLineRider().updatePositionWithoutSpace(1, 0);
@@ -162,12 +217,14 @@ public class GameController implements ActionListener, KeyListener {
 			screenManager.setCurrentPanelHolderFor("new").addKeyListenerToGameEngine(this);
 			screenManager.getGameEngine().setFocusable(true);
 			screenManager.getGameEngine().requestFocusInWindow();
+			backgroundManager = new BackgroundManager();
 			screenManager.getGameEngine().setBackgroundManager(backgroundManager);
 		}
 		else if(e.getActionCommand().equals("loadGame")){
 			screenManager.setCurrentPanelHolderFor("load").addKeyListenerToGameEngine(this);
 			screenManager.getGameEngine().setFocusable(true);
 			screenManager.getGameEngine().requestFocusInWindow();
+			backgroundManager = new BackgroundManager();
 			screenManager.getGameEngine().setBackgroundManager(backgroundManager);
 		}
 		else if(e.getActionCommand().equals("continueGame")){

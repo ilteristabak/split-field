@@ -1,0 +1,128 @@
+package com.group15.splitfield.entity;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+import com.group15.splitfield.controller.BackgroundManager;
+
+public class LineRider extends GameObject{
+
+	private static final int LENGTH = 30;
+	private static final int WIDTH = 40;
+	private int borderX;
+	private int borderY;
+	private int velocity;
+	private int noOfLives;
+	private int health;
+	private ImageIcon lineRiderImage;
+	
+	//DEĞİŞMEYENİ KORDİNATI AL ESKİSİNDEN ÇIKART
+	public LineRider(int positionX, int positionY) {
+		super(positionX, positionY);
+		// TODO Auto-generated constructor stub
+		lineRiderImage = new ImageIcon("LineRider.png");
+		velocity = 20;
+		noOfLives = 3;
+		health = 100;
+		super.borderX1 = 1300;
+		super.borderX2 = 0;
+		super.borderY1 = 700;
+		super.borderY2 = 0;
+	}
+	
+	public void incrementVelocityBy(int difference){
+		velocity += difference;
+		if(velocity < 0)
+			velocity = 0;
+	}
+	public int getVelocity(){
+		return velocity;
+	}
+	
+	public void decrementNoOfLives(){
+		noOfLives -= 1;
+	}
+	
+	public void decrementHealthBy(int decrement){
+		health -= decrement;
+		if(health < 0){
+			decrementNoOfLives();
+			health = 100;
+		}
+	}
+	
+	public int getNoOfLives(){
+		return noOfLives;
+	}
+	public void updatePositionWithoutSpace(int positionX, int positionY){
+		System.out.println("before:" + backgroundManager.getPixels()[this.positionY + positionY][this.positionX + positionX]);
+		//System.out.println(a[super.positionX + positionX][super.positionY + positionY]);
+		if((super.positionX + positionX) <= 1299 && (super.positionY + positionY) <= 667 && backgroundManager.getPixels()[super.positionY + positionY][super.positionX + positionX] == 3){
+			
+			this.positionX += positionX;
+			this.positionY += positionY;
+			System.out.println("after:" + backgroundManager.getPixels()[this.positionY][this.positionX]);
+		}
+		
+	}
+	public int updatePositionWithSpace(int positionX, int positionY){
+		System.out.println("Position: " + (this.positionY + positionY));
+		
+		if(backgroundManager.getPixels()[super.positionY + positionY][super.positionX + positionX] == 0){
+			this.positionX += positionX;
+			this.positionY += positionY;
+			System.out.println(backgroundManager.getPixels()[this.positionY][this.positionX]);
+			return 0;// not reached to edge yet
+		}
+		if((super.positionX + positionX) <= 1399 && (super.positionY + positionY) <= 774  && backgroundManager.getPixels()[super.positionY + positionY][super.positionX + positionX] == 3){
+			this.positionX += positionX;
+			this.positionY += positionY;
+			System.out.println(backgroundManager.getPixels()[this.positionY][this.positionX]);
+			return 1;// reached to an edge
+		}
+		if((super.positionX + positionX) <= 1299 && (super.positionY + positionY) <= 667  && backgroundManager.getPixels()[super.positionY + positionY][super.positionX + positionX] == 2){
+			this.positionX += positionX;
+			this.positionY += positionY;
+			return 2;// reached to an edge
+		}
+		return 3;
+		
+		
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		Image image = lineRiderImage.getImage();
+		g.drawImage(image, positionX - WIDTH/2, positionY - LENGTH/2, null);
+		g.setColor(Color.BLACK);
+	}
+	@Override
+	public void updatePosition() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateBorders(int x1, int x2, int y1, int y2) {
+		borderX1 -= x1;
+		borderX2 += x2;
+		borderY1 -= y1;
+		borderY2 += y2;
+		
+	}
+
+	@Override
+	public void setBackgroundManager(BackgroundManager backgroundManager) {
+		// TODO Auto-generated method stub
+		super.backgroundManager = backgroundManager;
+	}
+
+	@Override
+	public void updatePosition(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -36,7 +36,7 @@ public class GameEngine extends JPanel {
 		score = 0;
 		gameField = new GameField(this);
 		//informationField = new InformationField();
-		setSize(new Dimension(1300,700));
+		setSize(new Dimension(1400,800));
 		setLayout(null);
 		//setLayout(new BorderLayout());
 		//informationField.revalidate();

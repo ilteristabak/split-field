@@ -7,6 +7,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import com.group15.splitfield.controller.BackgroundManager;
+import com.group15.splitfield.controller.GameField;
 
 public class Speed extends PowerUp {
 	
@@ -52,6 +53,12 @@ public class Speed extends PowerUp {
 
 	@Override
 	public void setBackgroundManager(BackgroundManager backgroundManager) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setGameField(GameField gameField) {
 		// TODO Auto-generated method stub
 		
 	}
